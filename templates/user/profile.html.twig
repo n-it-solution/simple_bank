@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile Details{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-4">
+                <h2 class="text-success">Profile details <span><button class="btn btn-danger"><a
+                                    href="{{ path('profile_edit') }}" class="text-white">Edit</a></button></span></h2>
+                <table class="table">
+                    <tboody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{ app.user.firstname }} {{ app.user.lastname }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{ app.user.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>{{ app.user.phonenumber }}</td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                {% if app.user.gender == 'm' %}
+                                    Male
+                                {% else %}
+                                    Female
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>
+                                {% if app.user.type == 'p' %}
+                                    Personal
+                                {% else %}
+                                    Business
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Api Key</td>
+                            <td>
+                                {{ app.user.apikey }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Client Token</td>
+                            <td>
+                                {{ app.user.clienttoken }}
+                            </td>
+                        </tr>
+                    </tboody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

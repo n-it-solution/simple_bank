@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    # Explicitly disable rewriting for front controllers
+    RewriteRule ^/public/index.php - [L]
+
+    # Fix the bundles folder
+    RewriteRule ^assets/(.*)$ /public/assets/$1  [QSA,L]
+	RewriteRule ^contents/(.*)$ /public/contents/$1  [QSA,L]
+	RewriteRule ^uploads/(.*)$ /public/uploads/$1  [QSA,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Change below before deploying to production
+    RewriteRule ^(.*)$ /public/index.php [QSA,L]
+    #RewriteRule ^(.*)$ /web/app_dev.php [QSA,L]
+</IfModule>

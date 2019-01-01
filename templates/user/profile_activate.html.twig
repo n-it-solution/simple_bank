@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-4">
+            <h4 class="text-success">{% if app.request.get('code') == 1 %}Register Successfully please enter code to activate your account{% endif %}</h4>
+            <h3>{{ error }}</h3>
+            <form action="" method="post">
+                <label class="label label-primary">Email</label>
+                <input type="email" name="email" required class="form-control">
+                <label class="label label-primary">Code</label>
+                <input type="number" name="code1" required class="form-control">
+                <br>
+                <input type="submit" class="pull-right btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

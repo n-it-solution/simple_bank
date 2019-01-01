@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Make a Transaction{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-4">
+                <h4 class="text-danger">{{ error }}</h4>
+                <h2 class="text-success">Make a transaction</h2>
+                <form action="" method="post">
+                    <label class="label">Receiver username</label>
+                    <input required type="text" class="form-control" name="sender">
+                    <label class="label">Amount</label>
+                    <input required type="number" class="form-control" name="amount">
+                    <label class="label">Currency</label>
+                    <select required class="form-control" name="currency">
+                        {% for c in currency %}
+                        <option value="{{ c.id }}">{{ c.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label class="label">Description</label>
+                    <textarea name="description" class="form-control" required></textarea>
+                    <br>
+                    <input type="submit" class="pull-right btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

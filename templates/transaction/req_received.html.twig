@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Received Transaction{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID#</th>
+                        <th>Requester Name</th>
+                        <th>Requester Email</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Date time</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for r in req %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ r.receiver.firstname }} {{ r.receiver.lastname }}</td>
+                            <td>{{ r.receiver.email }}</td>
+                            <td>{{ r.amount }}</td>
+                            <td>{{ r.currency.name }}</td>
+                            <td>{{ r.date }}</td>
+                            <td>
+                                <a href="{{ path('request_action',{action:'accept', id:r.id}) }}"><button class="btn btn-success">Accept</button></a>
+                                <a href="{{ path('request_action',{action:'reject', id:r.id}) }}"><button class="btn btn-danger">Reject</button></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

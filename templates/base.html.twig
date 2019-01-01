@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+        <!-- Components Vendor Styles -->
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/font-awesome/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/animate.css/animate.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/slick-carousel/slick/slick.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}css/theme.css">
+
+        <title>{% block title %}{% endblock %} | Simple Bank</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+            {#<nav class="navbar navbar-expand-sm bg-dark navbar-dark">#}
+                {#<!-- Brand -->#}
+
+                {#<!-- Links -->#}
+                {#<ul class="navbar-nav">#}
+                    {#<li class="nav-item">#}
+                        {#<a class="nav-link" href="{{ path('direct_send') }}">Direct Send</a>#}
+                    {#</li>#}
+                    {#<!-- Dropdown -->#}
+                    {#{% if app.user is not empty %}#}
+                    {#<li class="nav-item dropdown">#}
+                        {#<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">#}
+                            {#Transaction#}
+                        {#</a>#}
+                        {#<div class="dropdown-menu">#}
+                            {#<a class="dropdown-item" href="{{ path('transaction') }}">New</a>#}
+                            {#<a class="dropdown-item" href="{{ path('request_send') }}">Request Send</a>#}
+                            {#<a class="dropdown-item" href="{{ path('request_received') }}">Request Received</a>#}
+                            {#<a class="dropdown-item" href="{{ path('transaction_send_report') }}">Transaction Send Report</a>#}
+                            {#<a class="dropdown-item" href="{{ path('transaction_received_report') }}">Transaction Received Report</a>#}
+                        {#</div>#}
+                    {#</li>#}
+                    {#<li class="nav-item align-right">#}
+                        {#<a class="nav-link" href="{{ path('profile') }}">Profile</a>#}
+                    {#</li>#}
+                    {#<li class="nav-item align-right">#}
+                        {#<a class="nav-link" href="{{ path('fos_user_security_logout') }}">Logout</a>#}
+                    {#</li>#}
+
+                        {#<li class="nav-item align-right">#}
+                            {#{{ render(controller(#}
+                                {#'App\\Controller\\TransactionController::partial',#}
+                                {#{ 'max': 3 }#}
+                            {#)) }}#}
+                        {#</li>#}
+                        {#{% else %}#}
+                            {#<li class="nav-item">#}
+                                {#<a class="nav-link" href="{{ path('user') }}">Register</a>#}
+                            {#</li>#}
+                            {#<li class="nav-item">#}
+                                {#<a class="nav-link" href="{{ path('fos_user_security_login') }}">Login</a>#}
+                            {#</li>#}
+                    {#{% endif %}#}
+                {#</ul>#}
+            {#</nav>#}
+        {% block body %}{% endblock %}
+            <script src="{{ asset('assets/front/') }}vendor/jquery/dist/jquery.min.js"></script>
+            <script src="{{ asset('assets/front/') }}vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+            <script src="{{ asset('assets/front/') }}vendor/popper.js/dist/umd/popper.min.js"></script>
+            <script src="{{ asset('assets/front/') }}vendor/bootstrap/bootstrap.min.js"></script>
+
+            <!-- JS Implementing Plugins -->
+            <script src="{{ asset('assets/front/') }}vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="{{ asset('assets/front/') }}vendor/slick-carousel/slick/slick.js"></script>
+
+            <!-- JS Front -->
+            <script src="{{ asset('assets/front/') }}js/hs.core.js"></script>
+            <!--<script src="../../assets/js/components/hs.validation.js"></script>-->
+            <!--<script src="../../assets/js/helpers/hs.focus-state.js"></script>-->
+            <script src="{{ asset('assets/front/') }}js/components/hs.slick-carousel.js"></script>
+
+            <!-- JS Plugins Init. -->
+            <script>
+                $(document).on('ready', function () {
+                    // initialization of slick carousel
+                    $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+                    // initialization of forms
+                    $.HSCore.helpers.HSFocusState.init();
+                });
+            </script>
+
+            {% block javascripts %}{% endblock %}
+    </body>
+</html>

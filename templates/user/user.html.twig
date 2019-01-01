@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+
+    <main class="container-fluid w-100" role="main">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
+                <a class="u-login-form py-3 mb-auto" href="index.html">
+                    <img class="img-fluid" src="{{ asset('assets/front/') }}img/logo.png" width="160" alt="Stream Dashboard UI Kit">
+                </a>
+
+                <div class="u-login-form">
+                    <form class="mb-3" action="/">
+                        <div class="mb-3">
+                            <h1 class="h2">Claim Your Free account!</h1>
+                            <p class="small">Login to your dashboard with your registered email address and password.</p>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="First Name">First Name</label>
+                                    <input id="First Name" class="form-control" name="First Name" type="text" placeholder="">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="Last Name">Last Name</label>
+                                    <input id="Last Name" class="form-control" name="Last Name" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input id="email" class="form-control" name="email" type="text" placeholder="">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="gender">Gender</label>
+                                    <select class="custom-select" id="gender" name="Gender">
+                                        <option value="canada">Male</option>
+                                        <option value="belgium">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="account-type">Account type</label>
+                                    <select class="custom-select" id="account-type" name="Account-type">
+                                        <option value="canada">Individual</option>
+                                        <option value="belgium">Company</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="password">Password</label>
+                                    <input id="password" class="form-control" name="password" type="password" placeholder="Enter your password">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="confirmPassword">Confirm password</label>
+                                    <input id="confirmPassword" class="form-control" name="confirmPassword" type="password" placeholder="Re-enter your password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input id="rememberMe" class="custom-control-input" name="rememberMe" type="checkbox">
+                            <label class="d-block custom-control-label" for="rememberMe">I agree with <a href="#">terms &amp; conditions</a></label>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" type="submit">Sing Up</button>
+                    </form>
+
+                    <p class="small">
+                        Already have an account? <a href="#">Login here</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
+                <iframe src="slider.html" frameborder="0" style="width: 100%; height: 100%"></iframe>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Received Transaction{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID#</th>
+                        <th>Sender Name</th>
+                        <th>Sender Email</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Date time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for t in transactions %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>
+                                {% if t.type != 0 %}
+                                    {{ t.sender.firstname }} {{ t.sender.lastname }}
+                                {% else %}
+                                    {{ t.direct.name }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if t.type != 0 %}
+                                    {{ t.sender.email }}
+                                {% else %}
+                                    Its unregistered user
+                                {% endif %}
+                            </td>
+                            <td>{{ t.amount }}</td>
+                            <td>{{ t.currency.name }}</td>
+                            <td>{{ t.date }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

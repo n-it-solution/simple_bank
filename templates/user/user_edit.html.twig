@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-4">
+            <h2 class="text-danger">Edit profile of {{ app.user.firstname }} {{ app.user.lastname }} <span><button class="btn btn-success"><a href="{{ path('profile') }}" class="text-white">Profile</a></button></span></h2>
+            <form action="" method="post">
+                <label class="label label-primary">First Name</label>
+                <input type="text" name="fName" value="{{ app.user.firstname }}" required class="form-control">
+                <label class="label label-primary">Last Name</label>
+                <input type="text" name="lName" value="{{ app.user.lastname }}" required class="form-control">
+                <label class="label label-primary">Email</label>
+                <input type="text" name="email" required value="{{ app.user.email }}" class="form-control">
+                <label class="label label-primary">Username</label>
+                <input type="text" name="username" value="{{ app.user.username }}" required class="form-control">
+                <label class="label label-primary">Phone Number, Example(+1-541-754-3010)</label>
+                <input type="text" name="pNumber" value="{{ app.user.phonenumber }}" required class="form-control">
+                <label class="label label-primary">Gender</label><br>
+                Male<input type="radio" {% if app.user.gender == 'm' %}checked="checked"  {% endif %} name="gender" required value="m">
+                Female<input type="radio" {% if app.user.gender == 'f' %}checked="checked"  {% endif %}  name="gender" required value="f"><br>
+                <label class="label label-primary">Account Type</label>
+                <select name="type" required class="form-control">
+                    <option value="b" {% if app.user.type == 'b' %}selected{% endif %}>Business</option>
+                    <option value="p" {% if app.user.type == 'p' %}selected{% endif %}>Personal</option>
+                </select>
+                <br>
+                <input type="submit" class="pull-right btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
