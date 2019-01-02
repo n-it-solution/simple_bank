@@ -12,39 +12,43 @@
                 </a>
 
                 <div class="u-login-form">
-                    <form class="mb-3" action="/">
+                    <form class="mb-3" action="" method="post">
                         <div class="mb-3">
                             <h1 class="h2">Claim Your Free account!</h1>
                             <p class="small">Login to your dashboard with your registered email address and password.</p>
                         </div>
-
+                        <p class="text-danger">{{ error }}</p>
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="First Name">First Name</label>
-                                    <input id="First Name" class="form-control" name="First Name" type="text" placeholder="">
+                                    <input id="First Name" required class="form-control" value="{{ app.request.get('First_Name') }}" name="First Name" type="text" placeholder="">
 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="Last Name">Last Name</label>
-                                    <input id="Last Name" class="form-control" name="Last Name" type="text" placeholder="">
+                                    <input id="Last Name" required class="form-control" value="{{ app.request.get('Last_Name') }}" name="Last Name" type="text" placeholder="">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
-                            <input id="email" class="form-control" name="email" type="text" placeholder="">
+                            <input id="email" required class="form-control" value="{{ app.request.get('email') }}" name="email" type="text" placeholder="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="phone">Phone number</label>
+                            <input id="phone" required class="form-control" value="{{ app.request.get('phone') }}" name="phone" type="number" placeholder="">
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="gender">Gender</label>
                                     <select class="custom-select" id="gender" name="Gender">
-                                        <option value="canada">Male</option>
-                                        <option value="belgium">Female</option>
+                                        <option value="m" {% if app.request.get('Gender') == 'm' %}selected{% endif %}>Male</option>
+                                        <option value="f" {% if app.request.get('Gender') == 'f' %}selected{% endif %}>Female</option>
                                     </select>
                                 </div>
                             </div>
@@ -52,8 +56,8 @@
                                 <div class="form-group mb-3">
                                     <label for="account-type">Account type</label>
                                     <select class="custom-select" id="account-type" name="Account-type">
-                                        <option value="canada">Individual</option>
-                                        <option value="belgium">Company</option>
+                                        <option value="p" {% if app.request.get('Account-type') == 'p' %}selected{% endif %}>Individual</option>
+                                        <option value="c" {% if app.request.get('Account-type') == 'c' %}selected{% endif %}>Company</option>
                                     </select>
                                 </div>
                             </div>
@@ -67,24 +71,24 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="password">Password</label>
-                                    <input id="password" class="form-control" name="password" type="password" placeholder="Enter your password">
+                                    <input id="password" required class="form-control" name="password" type="password" placeholder="Enter your password">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
                                     <label for="confirmPassword">Confirm password</label>
-                                    <input id="confirmPassword" class="form-control" name="confirmPassword" type="password" placeholder="Re-enter your password">
+                                    <input id="confirmPassword" required class="form-control" name="confirmPassword" type="password" placeholder="Re-enter your password">
                                 </div>
                             </div>
                         </div>
 
                         <div class="custom-control custom-checkbox mb-3">
-                            <input id="rememberMe" class="custom-control-input" name="rememberMe" type="checkbox">
-                            <label class="d-block custom-control-label" for="rememberMe">I agree with <a href="#">terms &amp; conditions</a></label>
+                            <input required id="agree" class="custom-control-input" name="agree" type="checkbox">
+                            <label class="d-block custom-control-label" for="agree">I agree with <a href="#">terms &amp; conditions</a></label>
                         </div>
 
-                        <button class="btn btn-primary btn-block" type="submit">Sing Up</button>
+                        <button class="btn btn-primary btn-block submit-btn" disabled type="submit">Sing Up</button>
                     </form>
 
                     <p class="small">
@@ -95,9 +99,21 @@
             </div>
 
             <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
-                <iframe src="slider.html" frameborder="0" style="width: 100%; height: 100%"></iframe>
+                <iframe src="{{ path('slider') }}" frameborder="0" style="width: 100%; height: 100%"></iframe>
             </div>
         </div>
 
     </main>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $('#agree').change(function () {
+            if($(this).is(":checked")) {
+                $('.submit-btn').removeAttr('disabled');
+            }else {
+                $('.submit-btn').attr('disabled',true)
+            }
+        })
+    </script>
 {% endblock %}

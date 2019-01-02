@@ -73,6 +73,11 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Api_expire;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $status;
     public function __construct()
     {
         parent::__construct();
@@ -240,6 +245,18 @@ class User extends BaseUser
     public function setApiExpire(?string $Api_expire): self
     {
         $this->Api_expire = $Api_expire;
+
+        return $this;
+    }
+
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
