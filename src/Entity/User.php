@@ -78,6 +78,11 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      */
     private $status;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $reset_request;
     public function __construct()
     {
         parent::__construct();
@@ -257,6 +262,18 @@ class User extends BaseUser
     public function setStatus(int $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getResetRequest(): ?int
+    {
+        return $this->reset_request;
+    }
+
+    public function setResetRequest(?int $reset_request): self
+    {
+        $this->reset_request = $reset_request;
 
         return $this;
     }
