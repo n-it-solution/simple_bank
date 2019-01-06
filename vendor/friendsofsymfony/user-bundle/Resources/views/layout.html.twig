@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+        <!-- Components Vendor Styles -->
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/font-awesome/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/animate.css/animate.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}vendor/slick-carousel/slick/slick.css">
+        <link rel="stylesheet" href="{{ asset('assets/front/') }}css/theme.css">
+    </head>
+    <body>
+    {#<div class="container-fluid">#}
+        {#<div class="offset-4 col-md-4">#}
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="flash-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+            <div >
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
+        {#</div>#}
+
+    {#</div>#}
+    <script src="{{ asset('assets/front/') }}vendor/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('assets/front/') }}vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+    <script src="{{ asset('assets/front/') }}vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="{{ asset('assets/front/') }}vendor/bootstrap/bootstrap.min.js"></script>
+
+    <!-- JS Implementing Plugins -->
+    <script src="{{ asset('assets/front/') }}vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="{{ asset('assets/front/') }}vendor/slick-carousel/slick/slick.js"></script>
+
+    <!-- JS Front -->
+    <script src="{{ asset('assets/front/') }}js/hs.core.js"></script>
+    <!--<script src="../../assets/js/components/hs.validation.js"></script>-->
+    <!--<script src="../../assets/js/helpers/hs.focus-state.js"></script>-->
+    <script src="{{ asset('assets/front/') }}js/components/hs.slick-carousel.js"></script>
+
+    <!-- JS Plugins Init. -->
+    <script>
+        $(document).on('ready', function () {
+            // initialization of slick carousel
+            $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+            // initialization of forms
+            $.HSCore.helpers.HSFocusState.init();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('input').addClass('form-control');
+            $('input[type="submit"]').addClass("btn btn-default pull-right");
+            $('input[type="submit"]').removeClass("form-control");
+            // $('form > input').addClass('form-control')
+        })
+    </script>
+    </body>
+</html>

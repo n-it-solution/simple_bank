@@ -1,0 +1,33 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<main class="container-fluid w-100" role="main" style="min-height: 100vh">
+    <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white">
+            {#<a class="u-login-form py-3 mb-auto" href="index.html">#}
+                {#<img class="img-fluid" src="{{ asset('assets/front/') }}img/logo.png" width="160" alt="Stream Dashboard UI Kit">#}
+            {#</a>#}
+            <div class="u-login-form" style="height: 130px; padding-top: 7px;">
+                <img class="img-fluid" src="{{ asset('assets/front/') }}img/logo.png" width="160" alt="Stream Dashboard UI Kit">
+            </div>
+            <div class="u-login-form" style="padding-bottom: 27%;padding-top: 10%">
+                {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+                <div class="mb-3">
+                    <h1 class="h2">Enter new password </h1>
+                    <p class="small">Add new password</p>
+                </div>
+                {{ form_widget(form) }}
+                <br>
+                <div>
+                    <input type="submit" class="btn btn-primary btn-block" value="{{ 'resetting.reset.submit'|trans }}" />
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+
+        <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
+            <iframe src="{{ path('slider') }}" frameborder="0" style="width: 100%; height: 100%"></iframe>
+        </div>
+    </div>
+
+</main>

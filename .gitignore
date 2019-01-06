@@ -20,8 +20,6 @@
 !var/log/.gitkeep
 
 # Parameters
-/app/config/parameters.yml
-/app/config/parameters.ini
 
 # Managed by Composer
 /app/bootstrap.php.cache
@@ -29,7 +27,7 @@
 /bin/*
 !bin/console
 !bin/symfony_requirements
-/vendor/
+
 
 # Assets and user uploads
 /web/bundles/
@@ -46,11 +44,11 @@
 /composer.phar
 
 # Backup entities generated with doctrine:generate:entities command
-**/Entity/*~
+
 
 # Embedded web-server pid file
 /.web-server-pid
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/workspace.xml
-.ieea/
+.ieea/*
