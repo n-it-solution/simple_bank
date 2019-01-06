@@ -146,16 +146,16 @@ class UserController extends AbstractController
     /**
      * @Route("/forget/password", name="forget_password")
      */
-    public function recoverPassword(Request $request){
+    public function recoverPassword(Request $request,\Swift_Mailer $mailer){
 //        echo $this->loginCheck().'<br>';
         $checkStatus = $this->loginCheck();
 //        echo $checkStatus;
-        if ($checkStatus == 0){
-            return $this->redirectToRoute('fos_user_security_login');
+        if ($checkStatus == 1){
+            return $this->redirectToRoute('user');
         }elseif ($checkStatus == 2){
             return $this->redirectToRoute('profile_activate');
 //            echo 'User account not activated yet';
-        }elseif ($checkStatus == 1){
+        }elseif ($checkStatus == 0){
             $error = '';
             if($request->getMethod() =='POST'){
                 $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['email' => $request->get('email')]);
@@ -163,7 +163,7 @@ class UserController extends AbstractController
                     $error = 'Email not found';
                 }
                 else{
-                    echo 'success';
+//                    echo 'success';
 //                $user->setEnabled(1);
 //                $user = New User();
 //                $now = New \DateTime();
@@ -187,7 +187,23 @@ class UserController extends AbstractController
 //                echo date($now);
                     $em = $this->getDoctrine()->getManager();
                     $em->flush();
-//                return $this->redirectToRoute('fos_user_security_login');
+
+                    $message = (new \Swift_Message('Forget password code'))
+                        ->setFrom('mirza.amanan@gmail.com')
+                        ->setTo($user->getEmail())
+                        ->setBody('Your pin code is '.$a);
+                    $mailer->send($message);
+                    $sid    = "AC4758d9bcbe2cdc2ad6b5e0cfa0fe3297";
+                    $token  = "16be06db09767d4971362a12cda8041f";
+                    $twilio = new Client($sid, $token);
+                    $message = $twilio->messages
+                        ->create("+".$user->getPhoneNumber(), // to
+                            array(
+                                "from" => "+19202807191",
+                                "body" => "Your Verification code is " . $a
+                            )
+                        );}
+                return $this->redirectToRoute('reset_password');
                 }
             }
             return $this->render('user/forget_password.html.twig', [
@@ -229,7 +245,7 @@ class UserController extends AbstractController
             }
 
         }else{
-            echo 2;
+//            echo 2;
         };
         return $this->render('user/reset_password.html.twig',[
             'form' => $form,
@@ -243,7 +259,7 @@ class UserController extends AbstractController
      */
     public function profileActivate(Request $request,\Swift_Mailer $mailer){
         $checkStatus = $this->loginCheck();
-        echo $checkStatus;
+//        echo $checkStatus;
         if ($checkStatus == 0){
             return $this->redirectToRoute('fos_user_security_login');
         }elseif ($checkStatus == 2){
@@ -275,9 +291,6 @@ class UserController extends AbstractController
             }elseif ($request->get('action') == 'phone'){
                 $check = $em->getRepository(User::class)->findOneBy(['phoneNumber' => $this->getUser()->getPhoneNumber()]);
                 if (!empty($check)) {
-                    $sid    = "AC4758d9bcbe2cdc2ad6b5e0cfa0fe3297";
-                    $token  = "16be06db09767d4971362a12cda8041f";
-                    $twilio = new Client($sid, $token);
                     function randomPassword()
                     {
                         $alphabet = "0123456789";
@@ -290,6 +303,9 @@ class UserController extends AbstractController
                         return implode($pass); //turn the array into a string
                     }
                     $a = randomPassword();
+                    $sid    = "AC4758d9bcbe2cdc2ad6b5e0cfa0fe3297";
+                    $token  = "16be06db09767d4971362a12cda8041f";
+                    $twilio = new Client($sid, $token);
                     $message = $twilio->messages
                         ->create("+".$check->getPhoneNumber(), // to
                             array(

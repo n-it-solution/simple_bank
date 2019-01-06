@@ -6,37 +6,41 @@
 
     <main class="container-fluid w-100" role="main">
         <div class="row">
-            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
-                <a class="u-login-form py-3 mb-auto" href="index.html">
+            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white">
+                {#<a class="u-login-form py-3 mb-auto" href="index.html">
                     <img class="img-fluid" src="{{ asset('assets/front/') }}img/logo.png" width="160" alt="Stream Dashboard UI Kit">
-                </a>
-                <div class="u-login-form">
+                </a>#}
+                <div class="u-login-form" style="height: 130px; padding-top: 7px;">
+                    <img class="img-fluid" src="{{ asset('assets/front/') }}img/logo.png" width="160" alt="Stream Dashboard UI Kit">
+                </div>
+
+                <div class="u-login-form" style="padding-bottom: 25%; padding-top: 13%;">
                         <form class="mb-3" action="" method="post">
                             <div class="mb-3">
-                                <h1 class="h2">Type you pin code <a href="{{ path('profile_activate',{action:'email'}) }}">Email </a> /
-                                    <a href="{{ path('profile_activate',{action:'phone'}) }}"> Phone number</a></h1>
-                                <p class="small">Resend password by</p>
+                                <h1 class="h2">Type your pin code</h1>
+                                {#<p class="small">Resend code</p>#}
+                                <div style="text-align: center; margin-top: 18px;">
+                                    <span style="float: left; color: #5a6a7e; font-size: 13px;">Resend Code</span>
+                                    <a href="{{ path('profile_activate',{action:'email'}) }}" class="num1">by email </a>
+                                    <a href="{{ path('profile_activate',{action:'phone'}) }}" class="num2">by phone#</a>
+                                </div>
                             </div>
                             <p class="text-danger">{{ error }}</p>
                             <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group mb-6">
-                                        <label for="password">Enter your code</label>
+                                <div class="col-md-12" style="padding: 0;margin: 0">
+                                    <div class="form-group mb-6" style="padding: 0;margin: 0">
+                                        <label for="password">Enter pin code</label>
                                         <input id="password" required class="form-control" name="pin_code" type="number">
                                     </div>
+                                    <button class="btn btn-primary btn-block submit-btn" style="margin-top: -15px" type="submit">Activate my account</button>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-block submit-btn" type="submit">Activate my account</button>
                         </form>
-                    <p class="small">
-                        <a href="#">Login here</a>
-                    </p>
                 </div>
 
             </div>
-
             <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
-                <iframe src="{{ path('slider') }}" frameborder="0" style="width: 100%; height: 100%"></iframe>
+                <iframe src="{{ path('slider') }}" scrolling="no" frameborder="0" style="width: 100%; height: 100%"></iframe>
             </div>
         </div>
 

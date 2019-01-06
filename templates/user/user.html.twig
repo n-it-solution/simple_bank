@@ -4,48 +4,50 @@
 
 {% block body %}
 
-    <main class="container-fluid w-100" role="main">
+    <main class="container-fluid w-100" style="min-height: 100vh;" role="main">
         <div class="row">
-            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
-                <a class="u-login-form py-3 mb-auto" href="index.html">
+            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white">
+                {#<a class="u-login-form py-3 mb-auto" href="index.html">
                     <img class="img-fluid" src="{{ asset('assets/front/') }}img/logo.png" width="160" alt="Stream Dashboard UI Kit">
-                </a>
-
-                <div class="u-login-form">
+                </a>#}
+                <div class="u-login-form" style="height: 130px; padding-top: 7px;">
+                    <img class="img-fluid" src="{{ asset('assets/front/') }}img/logo.png" width="160" alt="Stream Dashboard UI Kit">
+                </div>
+                <div class="u-login-form" style="padding-bottom: 20%;">
                     <form class="mb-3" action="" method="post">
                         <div class="mb-3">
-                            <h1 class="h2">Claim Your Free account!</h1>
-                            <p class="small">Login to your dashboard with your registered email address and password.</p>
+                            <h1 class="h2">Sign up</h1>
+                            <p class="small">Create new account</p>
                         </div>
                         <p class="text-danger">{{ error }}</p>
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="First Name">First Name</label>
-                                    <input id="First Name" required class="form-control" value="{{ app.request.get('First_Name') }}" name="First Name" type="text" placeholder="">
+                                    {#<label for="First Name">First Name</label>#}
+                                    <input id="First Name" required class="form-control" value="{{ app.request.get('First_Name') }}" name="First Name" type="text" placeholder="First Name">
 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="Last Name">Last Name</label>
-                                    <input id="Last Name" required class="form-control" value="{{ app.request.get('Last_Name') }}" name="Last Name" type="text" placeholder="">
+                                    {#<label for="Last Name">Last Name</label>#}
+                                    <input id="Last Name" required class="form-control" value="{{ app.request.get('Last_Name') }}" name="Last Name" type="text" placeholder="Last Name">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="email">Email</label>
-                            <input id="email" required class="form-control" value="{{ app.request.get('email') }}" name="email" type="text" placeholder="">
+                            {#<label for="email">Email</label>#}
+                            <input id="email" required class="form-control" value="{{ app.request.get('email') }}" name="email" type="email" placeholder="E-mail">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="phone">Phone number</label>
-                            <input id="phone" required class="form-control" value="{{ app.request.get('phone') }}" name="phone" type="number" placeholder="">
+                            {#<label for="phone">Phone number</label>#}
+                            <input id="phone" required class="form-control" value="{{ app.request.get('phone') }}" name="phone" type="number" placeholder="Phone Number">
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="gender">Gender</label>
+                                    {#<label for="gender">Gender</label>#}
                                     <select class="custom-select" id="gender" name="Gender">
                                         <option value="m" {% if app.request.get('Gender') == 'm' %}selected{% endif %}>Male</option>
                                         <option value="f" {% if app.request.get('Gender') == 'f' %}selected{% endif %}>Female</option>
@@ -54,7 +56,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="account-type">Account type</label>
+                                    {#<label for="account-type">Account type</label>#}
                                     <select class="custom-select" id="account-type" name="Account-type">
                                         <option value="p" {% if app.request.get('Account-type') == 'p' %}selected{% endif %}>Individual</option>
                                         <option value="c" {% if app.request.get('Account-type') == 'c' %}selected{% endif %}>Company</option>
@@ -62,28 +64,23 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="password">Password</label>
-                                    <input id="password" required class="form-control" name="password" type="password" placeholder="Enter your password">
+                                    {#<label for="password">Password</label>#}
+                                    <input id="password" required class="form-control" name="password" type="password" placeholder="Password">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="confirmPassword">Confirm password</label>
-                                    <input id="confirmPassword" required class="form-control" name="confirmPassword" type="password" placeholder="Re-enter your password">
+                                    {#<label for="confirmPassword">Confirm password</label>#}
+                                    <input id="confirmPassword" required class="form-control" name="confirmPassword" type="password" placeholder="Re-enter password">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="custom-control custom-checkbox mb-3">
+                        <div class="custom-control custom-checkbox mb-3" style="padding-top: 7px; padding-bottom: 7px;">
                             <input required id="agree" class="custom-control-input" name="agree" type="checkbox">
                             <label class="d-block custom-control-label" for="agree">I agree with <a href="#">terms &amp; conditions</a></label>
                         </div>
@@ -92,7 +89,7 @@
                     </form>
 
                     <p class="small">
-                        Already have an account? <a href="#">Login here</a>
+                        Already have an account? <a href="{{ path('fos_user_security_login') }}">Login</a>
                     </p>
                 </div>
 

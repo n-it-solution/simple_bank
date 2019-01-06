@@ -11542,9 +11542,9 @@ body.mobile-mode .u-sidebar-nav-menu--second-level {
     min-height: 100%;
 }
 
-.mnh-100vh {
-    min-height: 100vh;
-}
+/*.mnh-100vh {*/
+    /*min-height: 100vh;*/
+/*}*/
 
 @media (min-width: 768px) {
     .mnw-md-120 {
@@ -11582,7 +11582,19 @@ body.mobile-mode .u-sidebar-nav-menu--second-level {
 .mini .mCSB_outside + .mCSB_scrollTools {
     left: 0;
 }
-
+#fos_user_resetting_form_plainPassword_first{
+    margin-bottom: 10px!important;
+}
+.num1{
+    font-size:12px;
+    padding-right: 20px;
+    color: #333;
+}
+.num2{
+    font-size:12px;
+    padding-left: 20px;
+    color: #333;
+}
 /*------------------------------------
   File for your custom SCSS style
 ------------------------------------*/

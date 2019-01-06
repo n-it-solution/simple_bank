@@ -15,10 +15,12 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    {{ render(controller(
-    'App\\Controller\\TransactionController::partial',
-    { 'max': 3 }
-    )) }}
+    {#{% if is_granted('ROLE_USER') %}#}
+    {#{{ render(controller(#}
+    {#'App\\Controller\\TransactionController::partial',#}
+    {#{ 'max': 3 }#}
+    {#)) }}#}
+    {#{% endif %}#}
             {#<nav class="navbar navbar-expand-sm bg-dark navbar-dark">#}
                 {#<!-- Brand -->#}
 
