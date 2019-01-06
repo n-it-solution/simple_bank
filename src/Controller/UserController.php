@@ -202,7 +202,7 @@ class UserController extends AbstractController
                                 "from" => "+19202807191",
                                 "body" => "Your Verification code is " . $a
                             )
-                        );}
+                        );
                 return $this->redirectToRoute('reset_password');
                 }
             }
